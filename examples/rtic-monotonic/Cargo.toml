@@ -1,11 +1,10 @@
 [package]
-name = "blinky-rtic"
+name = "rtic-monotonic"
 version = "0.1.0"
 edition = "2018"
 
 [dependencies]
 embedded-hal = "0.2.4"
-# cortex-m-rt = "0.6.12"
 cortex-m-rtic = "0.6.0-alpha.2"
 panic-halt = "0.2.0"
 defmt-rtt = "0.2.0"
