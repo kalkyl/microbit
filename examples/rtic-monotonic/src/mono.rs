@@ -29,8 +29,8 @@ impl<T: Instance32> Clock for MonoTimer<T> {
 impl<T: Instance32> Monotonic for MonoTimer<T> {
     unsafe fn reset(&mut self) {
         self.0.intenset.modify(|_, w| w.compare0().set());
-        self.0.tasks_clear.write(|w| unsafe { w.bits(1) });
-        self.0.tasks_start.write(|w| unsafe { w.bits(1) });
+        self.0.tasks_clear.write(|w| w.bits(1));
+        self.0.tasks_start.write(|w| w.bits(1));
     }
 
     fn set_compare(&mut self, instant: &Instant<Self>) {
