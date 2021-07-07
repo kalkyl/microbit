@@ -22,7 +22,7 @@ mod app {
 
     #[task]
     fn tick(_: tick::Context) {
-        defmt::info!("Tick");
+        defmt::info!("Tick!");
         tick::spawn_after(Seconds(1_u32)).ok();
     }
 }
