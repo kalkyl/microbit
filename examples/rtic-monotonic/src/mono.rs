@@ -35,9 +35,9 @@ impl<T: Instance32> Monotonic for MonoTimer<T> {
 
     fn set_compare(&mut self, instant: &Instant<Self>) {
         #[cfg(feature = "v1")]
-        self.0.cc[0].write(|w| unsafe { w.bits(*instant.duration_since_epoch().integer()) });
+        self.0.cc[0].write(|w| unsafe { w.bits(instant.duration_since_epoch().integer()) });
         #[cfg(feature = "v2")]
-        self.0.cc[0].write(|w| unsafe { w.cc().bits(*instant.duration_since_epoch().integer()) });
+        self.0.cc[0].write(|w| unsafe { w.cc().bits(instant.duration_since_epoch().integer()) });
     }
 
     fn clear_compare_flag(&mut self) {

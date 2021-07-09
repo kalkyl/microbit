@@ -13,11 +13,17 @@ mod app {
     #[monotonic(binds = TIMER0, default = true)]
     type MyMono = MonoTimer<TIMER0>;
 
+    #[shared]
+    struct Shared {}
+
+    #[local]
+    struct Local {}
+
     #[init]
-    fn init(ctx: init::Context) -> (init::LateResources, init::Monotonics) {
+    fn init(ctx: init::Context) -> (Shared, Local, init::Monotonics) {
         let mono = MonoTimer::new(ctx.device.TIMER0);
         tick::spawn().ok();
-        (init::LateResources {}, init::Monotonics(mono))
+        (Shared {}, Local {}, init::Monotonics(mono))
     }
 
     #[task]
