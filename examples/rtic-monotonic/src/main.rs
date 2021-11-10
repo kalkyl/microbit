@@ -6,9 +6,8 @@ use panic_halt as _;
 
 #[rtic::app(device = microbit::hal::pac, peripherals = true, dispatchers = [UART0])]
 mod app {
-    use super::mono::MonoTimer;
+    use super::mono::{ExtU32, MonoTimer};
     use microbit::hal::pac::TIMER0;
-    use rtic::time::duration::Seconds;
 
     #[monotonic(binds = TIMER0, default = true)]
     type MyMono = MonoTimer<TIMER0>;
@@ -29,6 +28,6 @@ mod app {
     #[task]
     fn tick(_: tick::Context) {
         defmt::info!("Tick!");
-        tick::spawn_after(Seconds(1_u32)).ok();
+        tick::spawn_after(1.secs()).ok();
     }
 }
