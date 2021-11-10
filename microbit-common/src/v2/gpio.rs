@@ -105,10 +105,17 @@ pub type MOSI<MODE> = p0::P0_13<MODE>;
 pub type MISO<MODE> = p0::P0_01<MODE>;
 pub type SCK<MODE> = p0::P0_17<MODE>;
 
-/* i2c */
+/* i2c - internal */
+pub type INT_SCL = p0::P0_08<Input<Floating>>;
+pub type INT_SDA = p0::P0_16<Input<Floating>>;
+
+/* i2c - external */
 pub type SCL = p0::P0_26<Input<Floating>>;
 pub type SDA = p1::P1_00<Input<Floating>>;
 
 /* uart */
-pub type UART_TX = p1::P1_08<Output<PushPull>>;
-pub type UART_RX = p0::P0_06<Input<Floating>>;
+pub type UART_TX = p0::P0_06<Output<PushPull>>;
+pub type UART_RX = p1::P1_08<Input<Floating>>;
+
+/* speaker */
+pub type SPEAKER = p0::P0_00<Output<PushPull>>;
